@@ -1,0 +1,5 @@
+{
+  "senderId":   "<GERÇEK_SENDER_ID>",
+  "receiverId": "<GERÇEK_RECEIVER_ID>",
+  "content":    "Bu bir test mesajıdır."
+}

@@ -2,20 +2,8 @@ import { getServerSession } from "next-auth";
 import { authOptions }      from "@/lib/auth";  // veya doğru yolunuza göre
 import "./globals.css";
 
-type SessionUser = {
-  name?: string | null;
-  email?: string | null;
-  image?: string | null;
-  role?: string | null;
-};
-
-type Session = {
-  user?: SessionUser;
-  [key: string]: any;
-};
-
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session: Session | null = await getServerSession(authOptions);
+export default async function RootLayout({ children }) {
+  const session = await getServerSession(authOptions);
 
   return (
     <html lang="tr">
@@ -31,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <a href="/events/new">Etkinlik Ekle</a>
                 {/* Profil linki buraya ekleniyor */}
                 <a href="/profile">Profilim</a>
-                {session.user && session.user.role === "ADMIN" && <a href="/admin">Admin Paneli</a>}
+                {session.user.role === "ADMIN" && <a href="/admin">Admin Paneli</a>}
                 <a href="/api/auth/signout">Çıkış</a>
               </>
             ) : (
