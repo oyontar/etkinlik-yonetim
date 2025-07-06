@@ -1,18 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Etkinlik Yönetim Sistemi
 
-## Getting Started
+## Proje Tanımı
+Bu proje, kullanıcı yönetimi, rol tabanlı erişim kontrolü, etkinlik oluşturma ve listeleme, kayıt sistemi ile kullanıcılar arası mesajlaşma gibi temel işlevleri barındıran bir etkinlik yönetim web uygulamasıdır.  
+Next.js (App Router) + Prisma + SQLite + Tailwind CSS kullanılarak geliştirilmiştir.
 
-First, run the development server:
+## Kullanılan Teknolojiler
+- **Framework**: Next.js  
+- **ORM**: Prisma  
+- **Veritabanı**: SQLite  
+- **Kimlik Doğrulama**: NextAuth.js (Credentials & JWT)  
+- **CSS**: Tailwind CSS  
+- **Diğer**: bcrypt (şifre hashleme)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Kurulum Talimatları
+1. Depoyu klonlayın:
+   ```bash
+   git clone https://github.com/kullanici/etkinlik-yonetim.git
+   cd etkinlik-yonetim
 ```
+2. Bağımlılıkları yükleyin:
+
+pnpm install
+
+3. Ortam değişkenlerini ayarlayın:
+Proje kök dizininde .env.local dosyası oluşturup aşağıdakileri ekleyin:
+
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=<güçlü-rastgele-bir-di
+
+4. Prisma ile veritabanını oluşturun ve client'ı üretin:
+
+npx prisma migrate dev --name init
+npx prisma generate
+
+5. Geliştirme sunucusunu başlatın:
+
+pnpm dev
+
+6. Tarayıcıda http://localhost:3000]adresine gidin.
+
+===Admin Giriş Bilgileri===
+Admin rolüne sahip test hesabı:
+
+Email: admin@gmail.com
+Şifre: qwerty
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
